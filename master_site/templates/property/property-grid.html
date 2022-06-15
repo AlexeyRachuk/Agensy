@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">Объекты</h1>
+                    <span class="color-text-a">Список доступных объектов</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Главная</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Объекты
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+
+<!--/ Property Grid Star /-->
+<section class="property-grid grid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="grid-option">
+                    <form>
+                        <select class="custom-select">
+                            <option selected>Все</option>
+                            {% for option in property.options.all %}
+                            <option value="{{ option.name }}">{{ option.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+            {% for property in property_list %}
+            <div class="col-md-4">
+                <div class="card-box-a card-shadow">
+                    <div class="img-box-a">
+                        <img src="{{ property.photo_preview.url }}" alt="" class="img-a img-fluid">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-overlay-a-content">
+                            <div class="card-header-a">
+                                <h2 class="card-title-a">
+                                    <a href="{{ property.get_absolute_url }}">{{ property.name }}</a>
+                                </h2>
+                                <p style="color:#fff;">{{ property.type }}</p>
+                            </div>
+                            <div class="card-body-a">
+                                <div class="price-box d-flex">
+                                    <span class="price-a">Цена | {{ property.price }}₽</span>
+                                </div>
+                                <a href="{{ property.get_absolute_url }}" class="link-a">Подробнее
+                                    <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                            <div class="card-footer-a">
+                                <ul class="card-info d-flex justify-content-around">
+                                    <li>
+                                        <h4 class="card-info-title">Площадь</h4>
+                                        <span>{{ property.area }}м
+                        <sup>2</sup>
+                      </span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Комнаты</h4>
+                                        <span>{{ property.room }}</span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Ванные</h4>
+                                        <span>{{ property.baths }}</span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Гаражи</h4>
+                                        <span>{{ property.garage }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--/ Property Grid End /-->
+{% endblock content %}

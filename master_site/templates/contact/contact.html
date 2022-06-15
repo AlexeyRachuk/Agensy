@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for contact in contacts %}
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">{{ contact.name }}</h1>
+                    <span class="color-text-a">{{ contact.text|safe }}</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/">Главная</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Контакты
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+
+<!--/ Contact Star /-->
+<section class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="contact-map box">
+                    <div id="map" class="contact-map">
+                        {{ contact.map|safe }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 section-t8">
+                <div class="row">
+                    <div class="col-md-7">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        {% csrf_token %}
+                                        {{ form.name }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        {{ form.subject }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        {{ form.message }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-a">Отправить сообщение</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!--<form class="form-a contactForm" action="" method="POST" role="form">
+                          {% csrf_token %}
+                          <div id="sendmessage">Ваше сообщение отправлено</div>
+                          <div id="errormessage">Сообщение не было отправлено</div>
+                          <div class="row">
+                            <div class="col-md-6 mb-3">
+                              <div class="form-group">
+                                <input type="text" value="{{ name }}" for="{{ form.name.id_for_name }}" name="name" class="form-control form-control-lg form-control-a" placeholder="Ваше имя" data-rule="minlen:4" data-msg="Имя должно содержать минимум 4 буквы">
+                                <div class="validation"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <div class="form-group">
+                                <input name="email" value="{{ email }}" for="{{ form.email.id_for_email }}" type="email" class="form-control form-control-lg form-control-a" placeholder="Ваш Email" data-rule="email" data-msg="Введите e-mail.">
+                                <div class="validation"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                              <div class="form-group">
+                                <input type="text" value="{{ subject }}" for="{{ form.subject.id_for_subject }}" name="subject" class="form-control form-control-lg form-control-a" placeholder="Тема обращения" data-rule="minlen:4" data-msg="Введите тему обращения">
+                                <div class="validation"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                              <div class="form-group">
+                                <textarea name="message" value="{{ message }}" for="{{ form.message.id_for_message }}" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Ваше сообщение" placeholder="Сообщение"></textarea>
+                                <div class="validation"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <button type="submit" class="btn btn-a">Send Message</button>
+                            </div>
+                          </div>
+                        </form>-->
+                    </div>
+                    <div class="col-md-5 section-md-t3">
+                        <div class="icon-box section-b2">
+                            <div class="icon-box-icon">
+                                <span class="ion-ios-paper-plane"></span>
+                            </div>
+                            <div class="icon-box-content table-cell">
+                                <div class="icon-box-title">
+                                    <h4 class="icon-title">Наши контакты</h4>
+                                </div>
+                                <div class="icon-box-content">
+                                    <p class="mb-1">Email
+                                        <span class="color-a"><a
+                                                href="mailto:{{ contact.email }}">{{ contact.email }}</a></span>
+                                    </p>
+                                    <p class="mb-1">Phone.
+                                        <span class="color-a"><a
+                                                href="tel:+7{{ contact.phone }}">+7{{ contact.phone }}</a></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-box section-b2">
+                            <div class="icon-box-icon">
+                                <span class="ion-ios-pin"></span>
+                            </div>
+                            <div class="icon-box-content table-cell">
+                                <div class="icon-box-title">
+                                    <h4 class="icon-title">Наш адрес</h4>
+                                </div>
+                                <div class="icon-box-content">
+                                    <p class="mb-1">
+                                        {{ contact.address }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-box">
+                            <div class="icon-box-icon">
+                                <span class="ion-ios-redo"></span>
+                            </div>
+                            <div class="icon-box-content table-cell">
+                                <div class="icon-box-title">
+                                    <h4 class="icon-title">Соцсети</h4>
+                                </div>
+                                <div class="icon-box-content">
+                                    <div class="socials-footer">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="{{ contact.facebook }}" class="link-one">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="{{ contact.twitter }}" class="link-one">
+                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="{{ contact.instagram }}" class="link-one">
+                                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Contact End /-->
+{% endfor %}
+{% endblock content %}

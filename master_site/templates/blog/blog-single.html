@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+<!--/ Intro Single star /-->
+{% block content %}
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">{{ blog.name }}</h1>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/">Главная</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                        <a href="/blog/">Блог</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{ blog.name }}
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+
+<!--/ News Single Star /-->
+
+<section class="news-single nav-arrow-b">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="news-img-box">
+                    <img src="{{ blog.image_main.url }}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                <div class="post-information">
+                    <ul class="list-inline text-center color-a">
+                        <li class="list-inline-item mr-2">
+                            <strong>Автор: </strong>
+                            <span class="color-text-a">{{ blog.autor }}</span>
+                        </li>
+                        <li class="list-inline-item mr-2">
+                            <strong>Категория: </strong>
+                            <span class="color-text-a">{{ blog.category }}</span>
+                        </li>
+                        <li class="list-inline-item">
+                            <strong>Дата: </strong>
+                            <span class="color-text-a">{{ blog.date }}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="post-content color-text-a">
+                    <p class="post-intro">
+                        {{ blog.text_preview|safe }}
+                    </p>
+                    <p>
+                        {{ blog.text_main|safe }}
+                    </p>
+                    {% if blog.text_quote %}
+                    <blockquote class="blockquote">
+                        <p class="mb-4">{{ blog.text_quote|safe }}</p>
+                        <footer class="blockquote-footer">
+                            <strong>{{ blog.quote_autor }}</strong>
+                        </footer>
+                    </blockquote>
+                    {% else %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+<!--/ News Single End /-->
