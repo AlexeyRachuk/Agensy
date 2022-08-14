@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from estate_contact.models import Contact, FormContactPage
 from django.core.mail import send_mail
+from django.shortcuts import render
 
 from .forms import ContactForm
+from .models import Contact
 
 
 def contact_page(request):

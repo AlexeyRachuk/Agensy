@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load tags %}
 {% block content %}
 {% for index in indexs %}
 <!--/ Carousel Star /-->
@@ -70,209 +71,16 @@
 <!--/ Services End /-->
 
 <!--/ Property Star /-->
-<section class="section-property section-t8">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="title-wrap d-flex justify-content-between">
-                    <div class="title-box">
-                        <h2 class="title-a">Новые объекты</h2>
-                    </div>
-                    <div class="title-link">
-                        <a href="/property/">Все объекты
-                            <span class="ion-ios-arrow-forward"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="property-carousel" class="owl-carousel owl-theme">
-
-
-
-            {% for index_property in index.index_property.all %}
-            <div class="carousel-item-b">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="{{ index_property.photo_preview.url }}" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="{{ index_property.get_absolute_url }}">{{ index_property.name }}</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Цена | {{ index_property.price }}₽</span>
-                                </div>
-                                <a href="{{ index_property.get_absolute_url }}" class="link-a">Подробнее
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Площадь</h4>
-                                        <span>{{ index_property.area }}
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Комнаты</h4>
-                                        <span>{{ index_property.room }}м</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Ванные</h4>
-                                        <span>{{ index_property.baths }}</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Гаражи</h4>
-                                        <span>{{ index_property.garage }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
+{% get_last_property %}
 <!--/ Property End /-->
 
 <!--/ Agents Star /-->
-<section class="section-agents section-t8">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="title-wrap d-flex justify-content-between">
-                    <div class="title-box">
-                        <h2 class="title-a">Лучшие агенты</h2>
-                    </div>
-                    <div class="title-link">
-                        <a href="/agents/">Все агенты
-                            <span class="ion-ios-arrow-forward"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            {% for index_agents in index.index_agents.all %}
-            <div class="col-md-4">
-                <div class="card-box-d">
-                    <div class="card-img-d">
-                        <img src="{{ index_agents.photo.url }}" alt="" class="img-d img-fluid">
-                    </div>
-                    <div class="card-overlay card-overlay-hover">
-                        <div class="card-header-d">
-                            <div class="card-title-d align-self-center">
-                                <h3 class="title-d">
-                                    <a href="{{ index_agents.get_absolute_url }}" class="link-two">{{ index_agents.name }}</a>
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="card-body-d">
-                            <p class="content-d color-text-a">
-                                {{ index_agents.description }} </p>
-                            <div class="info-agents color-a">
-                                <p>
-                                    <strong>Phone: </strong><a href="tel:+7{{ index_agents.phone }}">+7{{ index_agents.phone }}</a></p>
-                                <p>
-                                    <strong>Email: </strong><a href="mailto:{{ index_agents.email }}">{{ index_agents.email }}</a></p>
-                            </div>
-                        </div>
-                        <div class="card-footer-d">
-                            <div class="socials-footer d-flex justify-content-center">
-                                <ul class="list-inline">
-                                    {% if index_agents.facebook %}
-                                    <li class="list-inline-item">
-                                        <a href="{{ index_agents.facebook }}" class="link-one">
-                                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                    {% if index_agents.twitter %}
-                                    <li class="list-inline-item">
-                                        <a href="{{ index_agents.twitter }}" class="link-one">
-                                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                    {% if index_agents.instagram %}
-                                    <li class="list-inline-item">
-                                        <a href="{{ index_agents.instagram }}" class="link-one">
-                                            <i class="fa fa-instagram" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
+{% get_bets_agents %}
 <!--/ Agents End /-->
 
 <!--/ News Star /-->
-<section class="section-news section-t8">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="title-wrap d-flex justify-content-between">
-                    <div class="title-box">
-                        <h2 class="title-a">Последние публикации</h2>
-                    </div>
-                    <div class="title-link">
-                        <a href="/blog/">Все статьи
-                            <span class="ion-ios-arrow-forward"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="new-carousel" class="owl-carousel owl-theme">
-
-
-            <div class="carousel-item-c">
-                <div class="card-box-b card-shadow news-box">
-                    {% for blog in blogs %}
-                    {% include 'blog/blog-grid.html' %}
-                    <div class="img-box-b">
-                        <img src="{{ blog.image_preview.url }}" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                            <div class="card-category-b">
-                                <a href="#" class="category-b">House</a>
-                            </div>
-                            <div class="card-title-b">
-                                <h2 class="title-2">
-                                    <a href="blog-single.html">{{ blog.name }}
-                                        <br> new</a>
-                                </h2>
-                            </div>
-                            <div class="card-date">
-                                <span class="date-b">18 Sep. 2017</span>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
 <!--/ News End /-->
-
+{% get_last_articles %}
 <!--/ Testimonials Star /-->
 <section class="section-testimonials section-t8 nav-arrow-a">
     <div class="container">

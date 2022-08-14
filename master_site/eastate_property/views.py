@@ -10,7 +10,7 @@ from .serializers import PropertySerializer
 
 class PropertyView(ListView):
     model = Property
-    queryset = Property.objects.filter(draft=True)
+    queryset = Property.objects.filter(draft=True).order_by('-date')
     template_name = 'property/property-grid.html'
     paginate_by = 9
 

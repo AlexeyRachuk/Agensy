@@ -7,25 +7,21 @@ from .models import *
 class ContactForm(forms.ModelForm):
     class Meta:
         model = FormContactPage
-        fields = ['name', 'email', 'subject', 'message']
+        fields = ['name', 'subject', 'message']
 
         widgets = {
             "name": TextInput(attrs={
                 'class': 'form-control form-control-lg form-control-a',
                 'placeholder': 'Ваше имя',
             }),
-            "email": TextInput(attrs={
-                'class': 'form-control form-control-lg form-control-a',
-                'placeholder': 'Ваш email',
-            }),
             "subject": TextInput(attrs={
                 'class': 'form-control form-control-lg form-control-a',
-                'placeholder': 'Тема обращения',
+                'placeholder': 'Способ связи',
             }),
             "message": Textarea(attrs={
                 'class': 'form-control form-control-lg form-control-a',
                 'rows': '5',
-                'placeholder': 'Тема обращения',
+                'placeholder': 'Сообщение',
             })
 
         }

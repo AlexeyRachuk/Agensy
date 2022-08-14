@@ -1,0 +1,71 @@
+<section class="section-property section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Новые объекты</h2>
+                    </div>
+                    <div class="title-link">
+                        <a href="/property/">Все объекты
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="property-carousel" class="owl-carousel owl-theme">
+
+
+
+            {% for index_property in last_propetys %}
+            <div class="carousel-item-b">
+                <div class="card-box-a card-shadow">
+                    <div class="img-box-a">
+                        <img src="{{ index_property.photo_preview.url }}" alt="" class="img-a img-fluid">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-overlay-a-content">
+                            <div class="card-header-a">
+                                <h2 class="card-title-a">
+                                    <a href="{{ index_property.get_absolute_url }}">{{ index_property.name }}</a>
+                                </h2>
+                            </div>
+                            <div class="card-body-a">
+                                <div class="price-box d-flex">
+                                    <span class="price-a">Цена | {{ index_property.price }}₽</span>
+                                </div>
+                                <a href="{{ index_property.get_absolute_url }}" class="link-a">Подробнее
+                                    <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                            <div class="card-footer-a">
+                                <ul class="card-info d-flex justify-content-around">
+                                    <li>
+                                        <h4 class="card-info-title">Площадь</h4>
+                                        <span>{{ index_property.area }}
+                        <sup>2</sup>
+                      </span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Комнаты</h4>
+                                        <span>{{ index_property.room }}м</span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Ванные</h4>
+                                        <span>{{ index_property.baths }}</span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Гаражи</h4>
+                                        <span>{{ index_property.garage }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

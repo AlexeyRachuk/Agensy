@@ -13,6 +13,7 @@ class Agent(models.Model):
     facebook = models.CharField('Facebook', max_length=60, blank=True)
     twitter = models.CharField('Twitter', max_length=60, blank=True)
     instagram = models.CharField('Instagram', max_length=60, blank=True)
+    best = models.BooleanField('Лучший агент', default=False)
     url = models.SlugField(max_length=130, unique=True)
     draft = models.BooleanField("Публикация", default=False)
 

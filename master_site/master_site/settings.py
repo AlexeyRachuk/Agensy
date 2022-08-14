@@ -76,6 +76,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
             ],
+
+            'libraries': {
+                'tags': 'estate_index.templatestags.tags',
+            },
         },
     },
 ]
@@ -193,7 +197,7 @@ CKEDITOR_CONFIGS = {
             'autoembed',
             'embedsemantic',
             'autogrow',
-            # 'devtools',
+            'devtools',
             'widget',
             'lineutils',
             'clipboard',

@@ -6,12 +6,12 @@ from .models import Agent
 
 @admin.register(Agent)
 class AgentAdminForm(admin.ModelAdmin):
-    list_display = ('name', 'get_image', 'draft')
+    list_display = ('name', 'get_image', 'best', 'draft')
     list_filter = ('name',)
     search_fields = ('name',)
     prepopulated_fields = {'url': ('name',)}
     filter_horizontal = ('property_agent',)
-    list_editable = ('draft',)
+    list_editable = ('best', 'draft',)
 
     def get_image(self, obj):
         return mark_safe(f'<img src={obj.photo.url} width="50" height="60"')

@@ -1,0 +1,45 @@
+<section class="section-news section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Последние публикации</h2>
+                    </div>
+                    <div class="title-link">
+                        <a href="/blog/">Все статьи
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="new-carousel" class="owl-carousel owl-theme">
+            {% for blog in last_blogs %}
+            <div class="carousel-item-c">
+                <div class="card-box-b card-shadow news-box">
+                    <div class="img-box-b">
+                        <img src="{{ blog.image_preview.url }}" alt="" class="img-b img-fluid">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-header-b">
+                            <div class="card-category-b">
+                                <a href="{{ blog.category.get_absolute_url }}" class="category-b">{{ blog.category }}</a>
+                            </div>
+                            <div class="card-title-b">
+                                <h2 class="title-2">
+                                    <a href="{{ blog.category.get_absolute_url }}">{{ blog.name }}</a>
+                                </h2>
+                            </div>
+                            <div class="card-date">
+                                <span class="date-b">{{ blog.date }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+</section>

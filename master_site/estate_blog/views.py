@@ -19,14 +19,14 @@ class BlogCategory(ListView):
     model = Blog
     slug_field = 'url'
     template_name = 'blog/blog-grid.html'
-    context_object_name = 'blog_list'
+    context_object_name = 'seo_title'
 
     def get_queryset(self):
         return Blog.objects.filter(category__url=self.kwargs['cat_slug'], draft=True).order_by('-date')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Блог | Категория - ' + str(context['blog_list'][0].category)
+        context['title'] = 'Блог | Категория - ' + str(context['seo_title'][0].category)
         return context
 
 

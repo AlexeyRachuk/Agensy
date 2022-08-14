@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 from estate_agents.models import Agent
 
@@ -65,6 +66,7 @@ class Property(models.Model):
     agent = models.ForeignKey(Agent, verbose_name='Агент', on_delete=models.SET_NULL,
                               null=True, related_name='agent_property')
     url = models.SlugField(max_length=130, unique=True)
+    date = models.DateField('Дата публикации', default=date.today)
     draft = models.BooleanField("Публикация", default=False)
 
     def __str__(self):

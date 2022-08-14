@@ -53,7 +53,7 @@ class IndexAdminForm(forms.ModelForm):
 
 @admin.register(Index)
 class IndexAdminForm(SingletonModelAdmin):
-    filter_horizontal = ('index_agents', 'sites', 'slider', 'index_property')
+    filter_horizontal = ('sites', 'slider',)
     inlines = [BenefitsInline, ReviewInline, ]
     form = IndexAdminForm
 
