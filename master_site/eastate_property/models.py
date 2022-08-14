@@ -67,6 +67,7 @@ class Property(models.Model):
                               null=True, related_name='agent_property')
     url = models.SlugField(max_length=130, unique=True)
     date = models.DateField('Дата публикации', default=date.today)
+    is_slider = models.BooleanField('Отобажать в слайдере', default=False)
     draft = models.BooleanField("Публикация", default=False)
 
     def __str__(self):

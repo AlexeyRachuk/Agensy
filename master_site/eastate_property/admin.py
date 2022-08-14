@@ -21,10 +21,10 @@ admin.site.register(PropertyType)
 
 @admin.register(Property)
 class PropertyAdminForm(admin.ModelAdmin):
-    list_display = ('name', 'type', 'price', 'agent', 'date',  'draft')
+    list_display = ('name', 'type', 'price', 'agent', 'date', 'is_slider',   'draft')
     list_filter = ('type', 'agent', 'date')
     search_fields = ('name', 'price')
-    list_editable = ('draft',)
+    list_editable = ('is_slider', 'draft',)
     prepopulated_fields = {'url': ('name',)}
     filter_horizontal = ('options',)
     form = PropertyAdminForm

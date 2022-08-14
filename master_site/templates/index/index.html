@@ -3,37 +3,8 @@
 {% block content %}
 {% for index in indexs %}
 <!--/ Carousel Star /-->
-<div class="intro intro-carousel">
-    <div id="carousel" class="owl-carousel owl-theme">
-        {% for slider in index.slider.all %}
-        <div class="carousel-item-a intro-item bg-image"
-             style="background-image: url({{ slider.photo_main.image1.url }})">
-            <div class="overlay overlay-a"></div>
-            <div class="intro-content display-table">
-                <div class="table-cell">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="intro-body">
-                                    <p class="intro-title-top">{{ slider.type }}</p>
-                                    <h1 class="intro-title mb-4">
-                                        <a href="{{ slider.get_absolute_url }}"><span class="color-b">{{ slider.name }}
-                                    </h1></a>
-                                    <p class="intro-subtitle intro-price">
-                                        <span class="price-a">Цена | {{ slider.price }}₽</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+{% get_property_slider %}
 <!--/ Carousel end /-->
-
 <!--/ Services Star /-->
 <section class="section-services section-t8">
     <div class="container">

@@ -24,8 +24,6 @@ class Meta:
 class Index(SingletonModel):
     singleton_instance_id = 1
     title = models.CharField('Название компании', max_length=50)
-    slider = models.ManyToManyField(to='eastate_property.Property', verbose_name='Обеъекты слайдера',
-                                    related_name='property_index')
     descr = models.TextField('Описание в подвале', max_length=500)
     phone = models.CharField('Номер телефона в подвале', max_length=10, help_text='Номер без +7')
     email = models.EmailField('Email в подвале')

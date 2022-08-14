@@ -4,11 +4,16 @@ from django.views.generic import ListView, DetailView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Property
+from .models import Property, PropertyType
 from .serializers import PropertySerializer
 
 
-class PropertyView(ListView):
+class TypeFilter:
+    def get_types(self):
+        return PropertyType.objects.all()
+
+
+class PropertyView(TypeFilter, ListView):
     model = Property
     queryset = Property.objects.filter(draft=True).order_by('-date')
     template_name = 'property/property-grid.html'
@@ -20,13 +25,16 @@ class PropertyView(ListView):
         return context
 
 
-class PropertyCategory(ListView):
-    slug_field = 'url'
+class FilterPropertyView(TypeFilter, ListView):
     template_name = 'property/property-grid.html'
-    context_object_name = 'property_list'
+    paginate_by = 9
+
+    def get_queryset(self):
+        queryset = Property.objects.filter(type__in=self.request.GET.getlist('type'))
+        return queryset
 
 
-class PropertyDetailView(DetailView):
+class PropertyDetailView(TypeFilter, DetailView):
     model = Property
     slug_field = 'url'
     template_name = 'property/property-single.html'

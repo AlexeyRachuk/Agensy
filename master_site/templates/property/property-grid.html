@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load tags %}
 {% block content %}
 
 <!--/ Intro Single star /-->
@@ -34,11 +35,11 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="grid-option">
-                    <form>
+                    <form action="{% url 'filter' %}" method="get">
                         <select class="custom-select">
                             <option selected>Все</option>
-                            {% for option in property.options.all %}
-                            <option value="{{ option.name }}">{{ option.name }}</option>
+                            {% for type in view.get_types %}
+                            <option value="{{ type.name }}" name="type">{{ type.name }}</option>
                             {% endfor %}
                         </select>
                     </form>
