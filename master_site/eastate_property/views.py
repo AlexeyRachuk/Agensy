@@ -33,6 +33,11 @@ class FilterPropertyView(TypeFilter, ListView):
         queryset = Property.objects.filter(type__in=self.request.GET.getlist('type'))
         return queryset
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['type'] = f'type={self.request.GET.get("type")}&'
+        return context
+
 
 class PropertyDetailView(TypeFilter, DetailView):
     model = Property

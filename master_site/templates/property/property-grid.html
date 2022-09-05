@@ -39,7 +39,7 @@
                         <select class="custom-select">
                             <option selected>Все</option>
                             {% for type in view.get_types.all %}
-                            <option value="{{ type.url }}" name="type">{{ type.name }}</option>
+                            <option value="{{ type }}" name="type">{{ type.name }}</option>
                             {% endfor %}
                         </select>
                         <button type="submit" class="btn btn-b-n"><span class="fa fa-search" aria-hidden="true"></span></button>
