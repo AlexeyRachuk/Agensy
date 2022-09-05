@@ -38,10 +38,11 @@
                     <form action="{% url 'filter' %}" method="get">
                         <select class="custom-select">
                             <option selected>Все</option>
-                            {% for type in view.get_types %}
-                            <option value="{{ type.name }}" name="type">{{ type.name }}</option>
+                            {% for type in view.get_types.all %}
+                            <option value="{{ type.url }}" name="type">{{ type.name }}</option>
                             {% endfor %}
                         </select>
+                        <button type="submit" class="btn btn-b-n"><span class="fa fa-search" aria-hidden="true"></span></button>
                     </form>
                 </div>
             </div>

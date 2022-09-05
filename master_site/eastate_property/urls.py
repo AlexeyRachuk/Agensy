@@ -10,6 +10,7 @@ router.register(r'property', PropertyViewSet)
 urlpatterns = [
     path('', views.PropertyView.as_view()),
     path('filter/', views.FilterPropertyView.as_view(), name='filter'),
+    path('search/', views.Search.as_view(), name='search'),
     path("<slug:slug>/", views.PropertyDetailView.as_view(), name="property_detail"),
     path('api/', include(router.urls)),
 ]

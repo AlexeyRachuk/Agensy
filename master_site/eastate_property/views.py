@@ -51,6 +51,20 @@ class PropertyOptions(ListView):
     context_object_name = 'options_list'
 
 
+class Search(ListView):
+    paginate_by = 9
+    template_name = 'property/property-grid.html'
+
+    def get_queryset(self):
+        q = self.request.GET.get('q').capitalize()
+        return Property.objects.filter(name__icontains=q)
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['q'] = f'q={self.request.GET.get("q")}&'
+        return context
+
+
 class PropertyViewSet(viewsets.ModelViewSet):
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
