@@ -53,7 +53,8 @@
                 <div class="col-md-12 mb-2">
                     <div class="form-group">
                         <label for="Type">Ключевые слова</label>
-                        <input type="search" class="form-control form-control-lg form-control-a" placeholder="Введите название…" name="q">
+                        <input type="search" class="form-control form-control-lg form-control-a"
+                               placeholder="Введите название…" name="q">
                     </div>
                 </div>
 
@@ -97,8 +98,10 @@
         <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
             <ul class="navbar-nav">
                 {% load menubuilder %}{% menu headermenu %}
-    {% for item in menuitems %}<li class="nav-item"><a href="{{ item.url }}" title="{{ item.title|escape }}"{% if item.current %} class='nav-link active' {% else %} class='nav-link' {% endif %}>{{ item.title }}</a></li>
-    {% endfor %}
+                {% for item in menuitems %}
+                <li class="nav-item"><a href="{{ item.url }}" title="{{ item.title|escape }}" {% if item.current %}
+                                        class='nav-link active' {% else %} class='nav-link' {% endif %}>{{ item.title }}</a></li>
+                {% endfor %}
 
             </ul>
         </div>
@@ -183,29 +186,17 @@
             <div class="col-sm-12 col-md-4 section-md-t3">
                 <div class="widget-a">
                     <div class="w-header-a">
-                        <h3 class="w-title-a text-brand">The Company</h3>
+                        <h3 class="w-title-a text-brand">Агенство</h3>
                     </div>
                     <div class="w-body-a">
                         <div class="w-body-a">
                             <ul class="list-unstyled">
-                                <li class="item-list-a">
-                                    <i class="fa fa-angle-right"></i> <a href="#">Site Map</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="fa fa-angle-right"></i> <a href="#">Legal</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="fa fa-angle-right"></i> <a href="#">Agent Admin</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="fa fa-angle-right"></i> <a href="#">Careers</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="fa fa-angle-right"></i> <a href="#">Affiliate</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="fa fa-angle-right"></i> <a href="#">Privacy Policy</a>
-                                </li>
+
+                                {% load menubuilder %}{% menu footermenu %}
+                                {% for item in menuitems %}
+                                <li class="item-list-a"><i class="fa fa-angle-right"></i> <a href="{{ item.url }}">{{ item.title }}</a></li>
+                                {% endfor %}
+
                             </ul>
                         </div>
                     </div>
@@ -239,37 +230,38 @@
                 <nav class="nav-footer">
                     <ul class="list-inline">
 
-                             {% load menubuilder %}{% menu headermenu %}
-    {% for item in menuitems %}<li class="list-inline-item"><a href="{{ item.url }}" title="{{ item.title|escape }}">{{ item.title }}</a></li>
-    {% endfor %}
+                        {% load menubuilder %}{% menu headermenu %}
+                        {% for item in menuitems %}
+                        <li class="list-inline-item"><a href="{{ item.url }}" title="{{ item.title|escape }}">{{ item.title }}</a></li>
+                        {% endfor %}
 
                     </ul>
                 </nav>
                 <div class="socials-a">
-                                <ul class="list-inline">
-                                    {% if index.facebook %}
-                                    <li class="list-inline-item">
-                                        <a href="{{ property.agent.facebook }}">
-                                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                    {% if index.twitter %}
-                                    <li class="list-inline-item">
-                                        <a href="{{ property.agent.twitter }}">
-                                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                    {% if index.instagram %}
-                                    <li class="list-inline-item">
-                                        <a href="{{ property.agent.instagram }}">
-                                            <i class="fa fa-instagram" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </div>
+                    <ul class="list-inline">
+                        {% if index.facebook %}
+                        <li class="list-inline-item">
+                            <a href="{{ property.agent.facebook }}">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if index.twitter %}
+                        <li class="list-inline-item">
+                            <a href="{{ property.agent.twitter }}">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if index.instagram %}
+                        <li class="list-inline-item">
+                            <a href="{{ property.agent.instagram }}">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
                 <div class="copyright-footer">
                     <p class="copyright color-text-a">
                         &copy; {{ index.copywrite }}
@@ -282,7 +274,9 @@
                       Licensing information: https://bootstrapmade.com/license/
                       Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
                     -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a><br>Разработка: <a href="https://t.me/raccoon_meh" target="_blank"><img src="{% static 'img/raccoon_meh.svg' %}"></a>
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a><br>Разработка: <a
+                        href="https://t.me/raccoon_meh" target="_blank"><img
+                        src="{% static 'img/raccoon_meh.svg' %}"></a>
                 </div>
             </div>
         </div>
