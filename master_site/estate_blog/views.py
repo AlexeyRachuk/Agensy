@@ -19,6 +19,7 @@ class BlogCategory(ListView):
     model = Blog
     slug_field = 'url'
     template_name = 'blog/blog-grid.html'
+
     def get_queryset(self):
         return Blog.objects.filter(category__url=self.kwargs['cat_slug'], draft=True).order_by('-date')
 
